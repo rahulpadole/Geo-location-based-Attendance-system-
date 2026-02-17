@@ -1,0 +1,71 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && getUserRole() == 'admin';
+    }
+    
+    function isTeacher() {
+      return isAuthenticated() && getUserRole() == 'teacher';
+    }
+    
+    function isActive() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isActive == true;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin() || request.auth.uid == userId;
+    }
+    
+    // Attendance collection
+    match /attendance/{document} {
+      allow read: if isAuthenticated();
+      allow create: if isTeacher() && isActive();
+      allow update: if isTeacher() && request.auth.uid == resource.data.userId;
+      allow delete: if isAdmin();
+    }
+    
+    // College settings
+    match /collegeSettings/{document} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+    
+    // Timetable
+    match /timetable/{day} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+    
+    // Holidays
+    match /holidays/{document} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+    
+    // Audit logs
+    match /auditLogs/{document} {
+      allow read: if isAdmin();
+      allow create: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    // Activity logs
+    match /activity_logs/{document} {
+      allow read: if isAdmin();
+      allow create: if isAuthenticated();
+      allow write: if false;
+    }
+  }
+}

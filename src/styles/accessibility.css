@@ -1,0 +1,109 @@
+/* Focus visible styles */
+:focus-visible {
+  outline: 3px solid #1976d2;
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #1976d2;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 10000;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-color: black;
+    --background-color: white;
+    --border-color: black;
+  }
+  
+  button, input, select, textarea {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ARIA landmarks */
+[role="button"],
+[role="tab"],
+[role="menuitem"] {
+  cursor: pointer;
+}
+
+/* Form accessibility */
+label {
+  cursor: pointer;
+}
+
+input:disabled,
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Table accessibility */
+th {
+  text-align: left;
+  background-color: #f5f5f5;
+}
+
+/* Color contrast improvements */
+.error-message {
+  color: #b71c1c; /* Darker red for better contrast */
+}
+
+.success-message {
+  color: #1b5e20; /* Darker green for better contrast */
+}
+
+.warning-message {
+  color: #b26a00; /* Darker orange for better contrast */
+}
+
+/* Touch targets for mobile */
+button,
+a,
+input[type="button"],
+input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Focus indicators for custom components */
+.custom-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.5);
+}

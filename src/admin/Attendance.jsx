@@ -102,7 +102,7 @@ export default function AdminAttendance() {
                 <th>In Time</th>
                 <th>Out Time</th>
                 <th>Status</th>
-                <th>Late Reason</th>
+                
                 <th>In Loc</th>
                 <th>Out Loc</th>
               </tr>
@@ -118,7 +118,7 @@ export default function AdminAttendance() {
                   <td style={{ textAlign: "center" }}>{r.outTime?.toDate ? r.outTime.toDate().toLocaleTimeString() : (r.outTime || "-")}</td>
 
                   <td style={{ textAlign: "center" }}>{r.status}</td>
-                  <td style={{ textAlign: "center" }}>{r.lateReason || "-"}</td>
+                  
                   <td style={{ textAlign: "center" }}>{r.inLocation ? `${r.inLocation.distance.toFixed(0)}m` : "-"}</td>
                   <td style={{ textAlign: "center" }}>{r.outLocation ? `${r.outLocation.distance.toFixed(0)}m` : "-"}</td>
                 </tr>

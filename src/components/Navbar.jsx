@@ -28,7 +28,7 @@ export default function Navbar({ role }) {
           <>
             <li><Link to="/teacher/dashboard">Dashboard</Link></li>
             <li><Link to="/teacher/attendance">Mark Attendance</Link></li>
-            <li><Link to="/teacher/leave">Mark Leave</Link></li>
+            
             <li><Link to="/teacher/history">History</Link></li>
             <li><Link to="/teacher/profile">Profile</Link></li>
           </>

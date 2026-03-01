@@ -475,14 +475,7 @@ export default function TeacherDashboard() {
               <span style={styles.actionArrow}>→</span>
             </button>
 
-            <button
-              onClick={() => navigate("/teacher/leave")}
-              style={styles.actionButton}
-            >
-              <span style={styles.actionIcon}>✈️</span>
-              <span style={styles.actionText}>Request Leave</span>
-              <span style={styles.actionArrow}>→</span>
-            </button>
+            
 
             <button
               onClick={() => navigate("/teacher/history")}

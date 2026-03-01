@@ -41,7 +41,7 @@ export default function ResponsiveNavbar({ role }) {
   const teacherMenuItems = [
     { to: "/teacher/dashboard", label: "Dashboard" },
     { to: "/teacher/attendance", label: "Mark Attendance" },
-    { to: "/teacher/leave", label: "Mark Leave" },
+    
     { to: "/teacher/history", label: "History" },
     { to: "/teacher/profile", label: "Profile" }
   ];
